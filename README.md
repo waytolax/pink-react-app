@@ -7,4 +7,3 @@
 5) Styled Components
 6) Axios
 7) Backend - Firebase
-"# pink-react-app" 
