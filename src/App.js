@@ -16,7 +16,7 @@ class App extends Component {
     previousLocation = this.props.location;
 
     componentWillUpdate(nextProps) {
-        let { location } = this.props;
+        const { location } = this.props;
 
         if (
           nextProps.history.action !== "POP" &&
@@ -33,8 +33,8 @@ class App extends Component {
       }
 
   render() {
-    let { location } = this.props;
-    let isModal = !!(
+    const { location } = this.props;
+    const isModal = !!(
       location.state &&
       location.state.modal &&
       this.previousLocation !== location
@@ -49,11 +49,9 @@ class App extends Component {
                 <Route path="/form" component={FormPage} />
                 <Redirect to={'/'} />
             </Switch>
-            {
-                isModal
-                ? <Route path="/auth" component={AuthPopup} />
-                : null
-            }
+
+            { isModal && <Route path="/auth" component={AuthPopup} /> }
+            
         </React.Fragment>
     )
   }

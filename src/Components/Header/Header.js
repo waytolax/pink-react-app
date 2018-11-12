@@ -14,17 +14,17 @@ const StyledHeader = styled.header`
 class Header extends Component {
 
     state = {
-        menu: "closed"
+        menu: "closed",
     }
 
     onToggleHandler = () => {
         if (this.state.menu === "closed") {
             this.setState({
-                menu: "opened"
+                menu: "opened",
             });
         } else {
             this.setState({
-                menu: "closed"
+                menu: "closed",
             });
         }
     }
@@ -41,15 +41,12 @@ class Header extends Component {
             />
             <Nav className={this.state.menu} />
             <Background className={this.state.menu} />
-            {
-                this.props.match.path === '/'
-                ? <AppDownload />
-                : null
-            }
+
+            { this.props.match.path === '/' && <AppDownload /> }
 
         </StyledHeader>
-    );
-};
+        );
+    };
 };
 
 export default withRouter(Header);

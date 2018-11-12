@@ -191,7 +191,7 @@ const StyledTable = styled.table`
 class Pricetable extends Component {
 
     state = {
-        position: null
+        position: null,
     }
 
     onChangeHandler = (event) => {
@@ -204,7 +204,7 @@ class Pricetable extends Component {
        : position = null;
 
        this.setState({
-           position
+           position,
        });
     }
 

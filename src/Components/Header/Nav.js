@@ -102,9 +102,7 @@ const StyledNav = styled.nav`
 const Nav = (props) => {
     return (
         <StyledNav className={props.className}>
-            {
-                props.className === 'closed' ? <Logo /> : null
-            }
+            { props.className === 'closed' && <Logo /> }
             <ul>
                 <li>
                     <NavLink
@@ -192,8 +190,8 @@ const Nav = (props) => {
 function mapStateToProps(state) {
     return {
         isLogged: !!state.auth.user,
-        userName: state.auth.user ? state.auth.user.displayName : null,
-        photoURL: state.auth.user ? state.auth.user.photoURL : null
+        userName: state.auth.user && state.auth.user.displayName,
+        photoURL: state.auth.user && state.auth.user.photoURL,
     }
 }
 

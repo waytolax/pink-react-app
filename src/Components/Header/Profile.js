@@ -42,7 +42,7 @@ const getAbbr = (name) => {
 };
 
 const onClickHandler = (e) => {
-    let target = e.currentTarget;
+    const target = e.currentTarget;
     target.classList.add('hide');
     setTimeout(() => {
         target.classList.remove('hide');

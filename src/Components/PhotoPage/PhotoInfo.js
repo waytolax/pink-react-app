@@ -75,7 +75,7 @@ const MAX_LENGTH = window.outerWidth < 660
 
 const readMore = (text) => {
     if (text.length > MAX_LENGTH) {
-        let last = text.substring(0, MAX_LENGTH).lastIndexOf(' ');
+        const last = text.substring(0, MAX_LENGTH).lastIndexOf(' ');
         text = text.substring(0, last).concat('...');
     }
     return text;

@@ -41,7 +41,7 @@ const StyledLabel = styled.label`
 
     ${media.tablet`
         height: 95%;
-        width: ${props => props.loading ? '34vw' : undefined};
+        width: ${props => props.loading && '34vw'};
 
         & svg{
             width: 100%;
@@ -49,7 +49,7 @@ const StyledLabel = styled.label`
     `}
 
     ${media.desktop`
-        width: ${props => props.loading ? '14vw' : undefined};
+        width: ${props => props.loading && '14vw'};
 
         & img{
             width: 100%;
@@ -57,13 +57,13 @@ const StyledLabel = styled.label`
     `}
 
     ${media.desktopL`
-        width: ${props => props.loading ? '270px' : undefined};
+        width: ${props => props.loading && '270px'};
     `}
 `;
 
 const UploadPhoto = (props) => {
 
-    let {imagePreviewUrl} = props;
+    const {imagePreviewUrl} = props;
     let imagePreview = null;
     if (imagePreviewUrl) {
         imagePreview = (<img src={imagePreviewUrl} alt='Загрузить фотографию' />);
@@ -113,13 +113,13 @@ function mapStateToProps(state) {
         imagePreviewUrl: state.photo.imagePreviewUrl,
         error: state.photo.imageError,
         loading: state.photo.loading,
-        isLogged: !!state.auth.user
+        isLogged: !!state.auth.user,
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        onImageSelect: (e) => dispatch(onImageSelect(e))
+        onImageSelect: (e) => dispatch(onImageSelect(e)),
     }
 }
 

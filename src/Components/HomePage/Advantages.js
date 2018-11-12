@@ -214,7 +214,7 @@ const Advantages = (props) => {
 
 function mapStateToProps(state) {
     return {
-        browser: state.global.browser
+        browser: state.global.browser,
     };
 }
 

@@ -17,9 +17,9 @@ import axios from 'axios';
 export function onLike(e) {
     return (dispatch, getState) => {
         e.preventDefault();
-        let state = getState().photo;
+        const state = getState().photo;
+        const current = e.target.id.slice(8);
         let articles = state.articles;
-        let current = e.target.id.slice(8);
         return articles.map(article => {
             if (article.id === +current) {
                 if (!article.liked) {
@@ -44,14 +44,14 @@ function setLike(articles) {
 
 export function onSetActive(e) {
     return (dispatch, getState) => {
-        let current = e.target.id.slice(5);
+        const current = e.target.id.slice(5);
         const types = ['brightness', 'saturate', 'contrast'];
         const state = getState().photo;
         let results;
             types.map(type => {
                 results = {
                     [type]: {active: false, value: +state[type].value},
-                    [current]: {active: true, value: +state[current].value}
+                    [current]: {active: true, value: +state[current].value},
                 };
             return dispatch(setActive(results));
         });
@@ -68,8 +68,8 @@ function setActive(results) {
 export function onChangeValue(e) {
     return (dispatch) => {
         onSetActive(e);
-        let current = e.target.id.slice(5);
-        let value = +e.target.value;
+        const current = e.target.id.slice(5);
+        const value = +e.target.value;
         dispatch(changeValue(current, value));
     };
 }
@@ -99,8 +99,8 @@ export function onImageSelect (e) {
     return (dispatch) => {
         e.preventDefault();
 
-        let reader = new FileReader();
-        let file = e.target.files[0];
+        const reader = new FileReader();
+        const file = e.target.files[0];
         if (file) {
             if (file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/webp') {
                 if (file.size < 4194304) {
@@ -136,13 +136,13 @@ export function onUpload(e) {
     return (dispatch, getState) => {
         e.preventDefault();
         dispatch(fetchArticlesStart());
-        let state = getState().photo;
-        let authState = getState().auth;
+        const state = getState().photo;
+        const authState = getState().auth;
 
         const uploadTask = storage.ref(`images/${state.file.name}`).put(state.file);
         uploadTask.on('state_changed',
         (progress) => {
-            let status = Math.round((progress.bytesTransferred / progress.totalBytes) * 100);
+            const status = Math.round((progress.bytesTransferred / progress.totalBytes) * 100);
             console.log(status);
         }, (error) => {
             console.log(error);
@@ -153,7 +153,7 @@ export function onUpload(e) {
                 if (state.hasChanged) {
                     styles = `filter: brightness(${state.brightness.value}%) saturate(${state.saturate.value}%) contrast(${state.contrast.value}%);`;
                 }
-                let newArticle = {
+                const newArticle = {
                     best: false,
                     id: state.articles.length + 1,
                     image: url,
@@ -194,7 +194,7 @@ function addArticleSuccess(newArticles) {
 
 export function commentHandler(e) {
     return (dispatch) => {
-        let text = e.target.value;
+        const text = e.target.value;
         text.length === 180
         ? e.target.style.color = 'red'
         : e.target.style.color = 'black';
@@ -247,7 +247,7 @@ function fetchArticlesError(fetchError) {
 }
 
 function timeEndName(digit, type) {
-    let lastFigure = digit % 10;
+    const lastFigure = digit % 10;
     if (digit > 11 && digit < 15) {
         switch (type) {
             case 'day':
@@ -301,7 +301,7 @@ function timeEndName(digit, type) {
 }
 
 export function timeSince(date) {
-    let seconds = Math.floor((new Date() - date) / 1000);
+    const seconds = Math.floor((new Date() - date) / 1000);
     let interval = Math.floor(seconds / 31536000);
 
     // if (interval > 1) {

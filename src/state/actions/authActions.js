@@ -32,7 +32,7 @@ export function auth(username, email, password, isLogin, history) {
                 }, 1000);
             }
         } catch (e) {
-            let errorMsg = e.code ? e.code.slice(5) : e.message;
+            const errorMsg = e.code ? e.code.slice(5) : e.message;
             dispatch(authFailure(errorHandler(errorMsg)));
         }
     }
@@ -49,7 +49,7 @@ function errorHandler(error) {
          ['popup-closed-by-user', 'Окно авторизации закрыто пользователем'],
          ['account-exists-with-different-credential', 'Аккаунт уже существует с другими данными, используйте другой способ авторизации'],
     ]);
-    return errors.get(error);
+    return errors.get(error) || error;
 }
 
 function authStart() {
@@ -105,7 +105,7 @@ export function signInProvider(e, history) {
                 history.goBack();
             }, 1000);
         } catch (e) {
-            let errorMsg = e.code ? e.code.slice(5) : e.message;
+            const errorMsg = e.code ? e.code.slice(5) : e.message;
             dispatch(authFailure(errorHandler(errorMsg)));
         }
     }

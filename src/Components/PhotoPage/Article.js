@@ -14,7 +14,7 @@ const StyledArticle = styled.article`
 
     & img{
         display: block;
-        ${props => props.styles ? `${props.styles}` : undefined}
+        ${props => props.styles && `${props.styles}`}
     }
 
     &.best{
@@ -89,7 +89,7 @@ const StyledArticle = styled.article`
 const Article = (props) => {
     return (
         <StyledArticle
-            className={props.best ? 'best' : null}
+            className={props.best ? 'best' : undefined}
             styles={props.styles}
         >
             <h2 className="visually-hidden">Пост</h2>
@@ -98,7 +98,7 @@ const Article = (props) => {
             </Link>
             <PhotoInfo
                 id={props.id}
-                className={props.best ? 'best' : null}
+                className={props.best ? 'best' : undefined}
                 name={props.name}
                 time={props.time}
                 text={props.text}

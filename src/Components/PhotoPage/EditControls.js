@@ -41,9 +41,7 @@ const StyledControls = styled.form `
     }
 
     & li:not(.active) label:hover{
-        opacity: ${props => props.file
-            ? 0.6
-            : undefined}
+        opacity: ${props => props.file && 0.6}
     }
 
     & input{
@@ -90,9 +88,7 @@ const StyledControls = styled.form `
             width: 22px;
 			height: 22px;
 			margin-right: 35px;
-			fill: ${props => props.file
-                ? '#d22856'
-                : undefined};
+			fill: ${props => props.file && '#d22856'};
         }
     `}
 
@@ -136,9 +132,7 @@ const StyledArea = styled.textarea `
   background-color: #f2f2f2;
   padding: 15px;
   margin-bottom: 40px;
-  border-color: ${props => !props.disabled
-    ? '#d22856'
-    : undefined};
+  border-color: ${props => !props.disabled && '#d22856'};
 
     ${media.tablet`
         min-width: 41.7vw;

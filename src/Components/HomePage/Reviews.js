@@ -130,21 +130,21 @@ class Reviews extends Component {
                 author: 'Пушкин',
                 info: 'Поэт',
                 text: 'У Лукоморья дуб зеленый...',
-                position: 'prev'
+                position: 'prev',
             },
             {
                 id: 1,
                 author: 'Николай Петров',
                 info: '25 лет, водитель трамвая',
                 text: 'Это приложение перевернуло мой мир и позволило по-новому взглянуть на привычные серые вещи! А ещё я познакомился со своей будущей женой в комментариях к выложенной фотографии!',
-                position: 'current'
+                position: 'current',
             },
             {
                 id: 2,
                 author: 'Лермонтов',
                 info: 'Поэт',
                 text: 'Немного лет тому назад...',
-                position: 'next'
+                position: 'next',
             }
         ]
     }
@@ -161,7 +161,7 @@ class Reviews extends Component {
                     )
                 })
         } else {
-            let currentReview = this.state.reviews[this.state.currentReviewId]
+            const currentReview = this.state.reviews[this.state.currentReviewId]
                 return (
                     <li key={currentReview.id}>
                         <h3 className='author'>{currentReview.author}</h3>
@@ -177,49 +177,49 @@ class Reviews extends Component {
         const newCurrentId = (this.state.currentReviewId + 1) % arr.length;
 
         arr.forEach((review, index) => {
-            arr[index].position = 'next'
-            arr[this.state.currentReviewId].position = 'prev'
-            arr[newCurrentId].position = 'current'
+            arr[index].position = 'next';
+            arr[this.state.currentReviewId].position = 'prev';
+            arr[newCurrentId].position = 'current';
         })
 
         this.setState((prevState) => {
                 return {
-                    currentReviewId: (prevState.currentReviewId + 1) % prevState.reviews.length
+                    currentReviewId: (prevState.currentReviewId + 1) % prevState.reviews.length,
                 }
         })
     }
 
     onPrevHandler = () => {
         let arr = this.state.reviews;
-        let next = this.state.currentReviewId - 1
+        let next = this.state.currentReviewId - 1;
 
         if (this.state.currentReviewId === 0) {
-            next = this.state.reviews.length - 1
+            next = this.state.reviews.length - 1;
             this.setState({
-                currentReviewId: this.state.reviews.length
+                currentReviewId: this.state.reviews.length,
             });
         }
 
         arr.forEach((review, index) => {
-            arr[index].position = 'prev'
-            arr[this.state.currentReviewId].position = 'next'
-            arr[next].position = 'current'
+            arr[index].position = 'prev';
+            arr[this.state.currentReviewId].position = 'next';
+            arr[next].position = 'current';
         })
 
         this.setState((prevState) => {
                 return {
-                    currentReviewId: prevState.currentReviewId - 1
+                    currentReviewId: prevState.currentReviewId - 1,
                 }
         })
     }
 
     onChangeHandler = (event) => {
-      const id = event.target.id.slice(7) - 1
+      const id = event.target.id.slice(7) - 1;
 
       this.setState({
-          currentReviewId: id
+          currentReviewId: id,
       });
-      }
+     }
 
     render () {
         return (

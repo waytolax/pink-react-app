@@ -98,12 +98,14 @@ const SocialList = styled.div`
 
 
 function validateEmail(email) {
-    var re = /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
     return re.test(String(email).toLowerCase());
 }
 
 function validateUser(name) {
-    var re = /^[a-zA-Z][a-zA-Z0-9-_.]{1,20}$/;
+    const re = /^[a-zA-Z][a-zA-Z0-9-_.]{1,20}$/;
+
     return re.test(String(name).toLowerCase());
 }
 
@@ -122,7 +124,7 @@ class AuthPopup extends Component {
                 changed: false,
                 validation: {
                     required: true,
-                    userName: true
+                    userName: true,
                 }
             },
             email: {
@@ -135,7 +137,7 @@ class AuthPopup extends Component {
                 changed: false,
                 validation: {
                     required: true,
-                    email: true
+                    email: true,
                 }
             },
             password: {
@@ -148,7 +150,7 @@ class AuthPopup extends Component {
                 changed: false,
                 validation: {
                     required: true,
-                    minLength: 6
+                    minLength: 6,
                 }
             }
         }
@@ -225,7 +227,7 @@ class AuthPopup extends Component {
             this.state.authInputs.email.value,
             this.state.authInputs.password.value,
             true,
-            this.props.history
+            this.props.history,
         )
     }
 
@@ -234,12 +236,12 @@ class AuthPopup extends Component {
             this.state.authInputs.username.value,
             this.state.authInputs.email.value,
             this.state.authInputs.password.value,
-            false
+            false,
         )
     }
 
-    onClose = () =>{
-        this.props.history.goBack()
+    onClose = () => {
+        this.props.history.goBack();
     }
 
     render () {
@@ -315,7 +317,7 @@ function mapStateToProps(state) {
     return {
         errorMsg: state.auth.errorMsg,
         isLogged: !!state.auth.user,
-        userName: state.auth.user ? state.auth.user.displayName : null,
+        userName: state.auth.user && state.auth.user.displayName,
         loading: state.auth.loading,
     }
 }

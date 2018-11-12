@@ -39,10 +39,6 @@ const StyledLoader = styled.div `
   animation-delay: -0.5s;
   }
 
-  ${media.tablet`
-
-  `}
-
   ${media.desktop`
       margin-bottom: 100px;
   `}

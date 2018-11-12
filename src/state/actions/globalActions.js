@@ -25,7 +25,7 @@ function setBrowser(browser) {
 
 export function getMedia() {
     return dispatch => {
-        let media = window.innerWidth < 660 ? 'mobile'
+        const media = window.innerWidth < 660 ? 'mobile'
         : window.innerWidth >= 960 ? 'desktop'
         : 'tablet';
         dispatch(setMedia(media));

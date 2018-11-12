@@ -50,7 +50,7 @@ class MapContainer extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        browser: state.global.browser
+        browser: state.global.browser,
     };
 }
 

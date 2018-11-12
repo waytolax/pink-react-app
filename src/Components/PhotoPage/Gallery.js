@@ -56,8 +56,7 @@ class Gallery extends Component {
     }
 
     renderBestArticle () {
-        return this.props.articles.map(post => post.best
-            ? (
+        return this.props.articles.map(post => post.best && (
                 <Article
                     id={post.id}
                     key={post.id}
@@ -70,14 +69,12 @@ class Gallery extends Component {
                     best={post.best}
                     onClick={this.props.onLike}
                 />
-                )
-            : null
+            )
         );
     }
 
     renderArticles () {
-        return this.props.articles.map(post => !post.best
-            ? (
+        return this.props.articles.map(post => !post.best && (
                 <Article
                     id={post.id}
                     key={post.id}
@@ -92,7 +89,6 @@ class Gallery extends Component {
                     styles={post.styles}
                 />
                 )
-            : null
         );
     }
 
@@ -122,7 +118,7 @@ class Gallery extends Component {
 function mapStateToProps(state) {
     return {
         articles: state.photo.articles,
-        loading: state.photo.loading
+        loading: state.photo.loading,
     };
 }
 
@@ -130,7 +126,7 @@ function mapDispatchToProps(dispatch) {
     return {
         onLike: (e) => dispatch(onLike(e)),
         timeSince: (date) => timeSince(date),
-        fetchArticles,
+        fetchArticles: () => dispatch(fetchArticles()),
     };
 }
 

@@ -82,19 +82,19 @@ const StyledMain = styled.main`
 class Main extends Component {
 
     state = {
-        status: null
+        status: null,
     }
 
     onSubmitHandler = (event) => {
         event.preventDefault(event);
         this.setState({
-            status: 'success'
+            status: 'success',
         });
     }
 
     onCloseHandler = () => {
         this.setState({
-            status: null
+            status: null,
         });
         setTimeout(() => {
             window.scrollTo(0, 0);
@@ -109,12 +109,7 @@ class Main extends Component {
 
                 <Form onSubmit={this.onSubmitHandler}/>
 
-                {
-                    this.state.status === 'success'
-                        ? <FormPopup
-                            onClick={this.onCloseHandler} />
-                        : null
-                }
+                { this.state.status === 'success' && <FormPopup onClick={this.onCloseHandler} /> }
 
             </StyledMain>
         );

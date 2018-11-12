@@ -63,10 +63,10 @@ const StyledControls = styled.div`
     }
 
     ${media.tablet`
-        margin-top: ${props => props.type === 'review' ? '20px' : null}
+        margin-top: ${props => props.type === 'review' && '20px'}
     `}
     ${media.desktop`
-        display: ${props => props.type === 'review' ? 'none' : null}
+        display: ${props => props.type === 'review' && 'none'}
     `}
 `;
 
