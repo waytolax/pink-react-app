@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import styled from 'styled-components';
+import React, {Component} from 'react';
+import styled from 'styled-components'
 import {connect} from 'react-redux';
 import {auth, signInProvider} from '../../state/actions/authActions';
 import {media} from '../UI/media';
@@ -156,28 +156,28 @@ class AuthPopup extends Component {
 
     validateInput(value, validation) {
         if (!validation) {
-            return true
+            return true;
         }
 
-        let isValid = true
+        let isValid = true;
 
         if (validation.required) {
-            isValid = value.trim() !== '' && isValid
+            isValid = value.trim() !== '' && isValid;
         }
 
         if (validation.email) {
-            isValid = validateEmail(value) && isValid
+            isValid = validateEmail(value) && isValid;
         }
 
         if (validation.userName) {
-            isValid = validateUser(value) && isValid
+            isValid = validateUser(value) && isValid;
         }
 
         if (validation.minLength) {
-            isValid = value.length >= validation.minLength && isValid
+            isValid = value.length >= validation.minLength && isValid;
         }
 
-        return isValid
+        return isValid;
     }
 
     changeHandler = (event, inputName) => {
@@ -192,7 +192,7 @@ class AuthPopup extends Component {
 
         let isFormValid = true;
         Object.keys(authInputs).forEach(name => {
-          isFormValid = authInputs[name].valid && isFormValid
+          isFormValid = authInputs[name].valid && isFormValid;
         })
         this.setState({authInputs, isFormValid});
     }
@@ -305,7 +305,7 @@ class AuthPopup extends Component {
 
                     </form>
                 </StyledAuth>
-                
+
             </React.Fragment>
         )
     }
@@ -313,10 +313,10 @@ class AuthPopup extends Component {
 
 function mapStateToProps(state) {
     return {
-        errorMsg: state.authReducer.errorMsg,
-        isLogged: !!state.authReducer.user,
-        userName: state.authReducer.user ? state.authReducer.user.displayName : null,
-        loading: state.authReducer.loading,
+        errorMsg: state.auth.errorMsg,
+        isLogged: !!state.auth.user,
+        userName: state.auth.user ? state.auth.user.displayName : null,
+        loading: state.auth.loading,
     }
 }
 
@@ -327,4 +327,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthPopup)
+export default connect(mapStateToProps, mapDispatchToProps)(AuthPopup);

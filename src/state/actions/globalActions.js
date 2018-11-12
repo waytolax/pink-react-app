@@ -1,23 +1,26 @@
-import {SET_BROWSER, SET_MEDIA} from './actionTypes';
+import {
+    SET_BROWSER,
+    SET_MEDIA,
+} from '../constants/global';
 
 export function getBrowser() {
     return dispatch => {
         let browser;
         if (!!window.chrome && !!window.chrome.webstore) {
-            browser = 'chrome'
+            browser = 'chrome';
         }
         if ((navigator.userAgent.indexOf("MSIE") !== -1 ) || (!!document.documentMode === true )) {
-            browser = 'ie'
+            browser = 'ie';
         }
-        dispatch(setBrowser(browser))
-    }
+        dispatch(setBrowser(browser));
+    };
 }
 
 function setBrowser(browser) {
     return {
         type: SET_BROWSER,
-        browser
-    }
+        browser,
+    };
 }
 
 export function getMedia() {
@@ -25,13 +28,13 @@ export function getMedia() {
         let media = window.innerWidth < 660 ? 'mobile'
         : window.innerWidth >= 960 ? 'desktop'
         : 'tablet';
-        dispatch(setMedia(media))
-        }
+        dispatch(setMedia(media));
+    };
 }
 
 function setMedia(media) {
     return {
         type: SET_MEDIA,
-        media
-    }
+        media,
+    };
 }

@@ -1,21 +1,24 @@
-import {SET_BROWSER, SET_MEDIA} from '../actions/actionTypes';
+import {
+    SET_BROWSER,
+    SET_MEDIA
+} from '../constants/global';
 
 const initialState = {
     browser: '',
-    media: ''
-}
+    media: '',
+};
 
 export default function authReducer(state = initialState, action) {
     switch (action.type) {
         case SET_BROWSER:
             return {
                 ...state,
-                browser: action.browser
+                browser: action.browser,
             }
         case SET_MEDIA:
             return {
                 ...state,
-                media: action.media
+                media: action.media,
             }
         default:
             return state

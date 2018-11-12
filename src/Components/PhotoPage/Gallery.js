@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
 import {media} from '../UI/media';
@@ -52,7 +52,7 @@ const ArticleList = styled.div`
 class Gallery extends Component {
 
     componentDidMount() {
-        this.props.fetchArticles()
+        this.props.fetchArticles();
     }
 
     renderBestArticle () {
@@ -72,7 +72,7 @@ class Gallery extends Component {
                 />
                 )
             : null
-        )
+        );
     }
 
     renderArticles () {
@@ -93,7 +93,7 @@ class Gallery extends Component {
                 />
                 )
             : null
-        )
+        );
     }
 
     render () {
@@ -115,23 +115,23 @@ class Gallery extends Component {
                 </ArticleList>
 
             </StyledGallery>
-        )
+        );
     }
 }
 
 function mapStateToProps(state) {
     return {
-        articles: state.photoReducer.articles,
-        loading: state.photoReducer.loading
-    }
+        articles: state.photo.articles,
+        loading: state.photo.loading
+    };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         onLike: (e) => dispatch(onLike(e)),
-        fetchArticles: () => dispatch(fetchArticles()),
-        timeSince: (date) => timeSince(date)
-    }
+        timeSince: (date) => timeSince(date),
+        fetchArticles,
+    };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Gallery)
+export default connect(mapStateToProps, mapDispatchToProps)(Gallery);

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
 import {media} from '../UI/media';
@@ -106,14 +106,14 @@ const UploadPhoto = (props) => {
 
 function mapStateToProps(state) {
     return {
-        brightness: state.photoReducer.brightness,
-        saturate: state.photoReducer.saturate,
-        contrast: state.photoReducer.contrast,
-        file: state.photoReducer.file,
-        imagePreviewUrl: state.photoReducer.imagePreviewUrl,
-        error: state.photoReducer.imageError,
-        loading: state.photoReducer.loading,
-        isLogged: !!state.authReducer.user
+        brightness: state.photo.brightness,
+        saturate: state.photo.saturate,
+        contrast: state.photo.contrast,
+        file: state.photo.file,
+        imagePreviewUrl: state.photo.imagePreviewUrl,
+        error: state.photo.imageError,
+        loading: state.photo.loading,
+        isLogged: !!state.auth.user
     }
 }
 
@@ -123,4 +123,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(UploadPhoto)
+export default connect(mapStateToProps,mapDispatchToProps)(UploadPhoto);

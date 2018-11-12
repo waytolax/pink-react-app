@@ -136,7 +136,7 @@ const AppDownload = (props) => {
             </ul>
             <p>Доступно для iPhone, iPad, Android, Windows Phone, OS X, Windows 8</p>
         </StyledApp>
-    )
-}
+    );
+};
 
-export default AppDownload
+export default AppDownload;

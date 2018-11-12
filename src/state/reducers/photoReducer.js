@@ -1,4 +1,17 @@
-import {SET_ACTIVE, CHANGE_VALUE, SET_DEFAULT, UPLOAD, UPDATE_IMAGE, SET_IMAGE_ERROR, SET_LIKE, SET_COMMENT, ADD_ARTICLE_SUCCESS, FETCH_ARTICLES_START, FETCH_ARTICLES_SUCCESS, FETCH_ARTICLES_ERROR} from '../actions/actionTypes';
+import {
+    SET_ACTIVE,
+    CHANGE_VALUE,
+    SET_DEFAULT,
+    UPLOAD,
+    UPDATE_IMAGE,
+    SET_IMAGE_ERROR,
+    SET_LIKE,
+    SET_COMMENT,
+    ADD_ARTICLE_SUCCESS,
+    FETCH_ARTICLES_START,
+    FETCH_ARTICLES_SUCCESS,
+    FETCH_ARTICLES_ERROR,
+} from '../constants/photo';
 
 const initialState = {
     loading: true,
@@ -11,39 +24,39 @@ const initialState = {
     file: '',
     imagePreviewUrl: '',
     imageError: false,
-    commentText: ''
-}
+    commentText: '',
+};
 
 export default function photoReducer(state = initialState, action) {
     switch (action.type) {
         case FETCH_ARTICLES_START:
             return {
                 ...state,
-                loading: true
+                loading: true,
             }
         case FETCH_ARTICLES_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                articles: action.fetchedArticles
+                articles: action.fetchedArticles,
             }
         case FETCH_ARTICLES_ERROR:
         return {
             ...state,
             loading: false,
-            fetchError: action.fetchError
+            fetchError: action.fetchError,
         }
         case SET_ACTIVE:
             return {
                 ...state,
-                ...action.results
+                ...action.results,
             }
         case CHANGE_VALUE:
             return {
                 ...state,
                 [action.currentInput]: {
                     active: state[action.currentInput].active,
-                    value: action.inputValue
+                    value: action.inputValue,
                 },
                 hasChanged: true
             }
@@ -53,30 +66,30 @@ export default function photoReducer(state = initialState, action) {
                 brightness: {active: state.brightness.active, value: 100},
                 saturate: {active: state.saturate.active, value: 100},
                 contrast: {active: state.contrast.active, value: 100},
-                hasChanged: false
+                hasChanged: false,
             }
         case UPDATE_IMAGE:
             return {
                 ...state,
                 file: action.file,
                 imagePreviewUrl: action.url,
-                imageError: false
+                imageError: false,
             }
         case SET_IMAGE_ERROR:
             return {
                 ...state,
                 file: '',
-                imageError: true
+                imageError: true,
             }
         case SET_COMMENT:
             return {
                 ...state,
-                commentText: action.text
+                commentText: action.text,
             }
         case UPLOAD:
             return {
                 ...state,
-                styles: action.styles
+                styles: action.styles,
             }
         case ADD_ARTICLE_SUCCESS:
             return {
@@ -85,12 +98,12 @@ export default function photoReducer(state = initialState, action) {
                 articles: action.newArticles,
                 file: '',
                 imagePreviewUrl: '',
-                commentText: ''
+                commentText: '',
             }
         case SET_LIKE:
             return {
                 ...state,
-                articles: [...action.articles]
+                articles: [...action.articles],
             }
         default:
             return state

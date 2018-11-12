@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 import styled from 'styled-components';
 import {media} from '../UI/media';
 import {Controls} from '../UI/Controls';
@@ -195,13 +195,13 @@ class Pricetable extends Component {
     }
 
     onChangeHandler = (event) => {
-       const id = event.target.id.slice(6)
-       let position = null
+       const id = event.target.id.slice(6);
+       let position = null;
        id === '1'
        ? position = 'left'
        : id === '3'
        ? position = 'right'
-       : position = null
+       : position = null;
 
        this.setState({
            position
@@ -294,4 +294,4 @@ class Pricetable extends Component {
     }
 }
 
-export default Pricetable
+export default Pricetable;

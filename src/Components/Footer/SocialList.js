@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import {media} from '../UI/media';
 
@@ -33,7 +33,7 @@ const StyledList = styled.ul`
 	& li a {
 		fill: #d22856;
 	}
-    
+
     ${media.tablet`
         flex-basis: 190px;
 		margin: 5px 20px 0;
@@ -75,7 +75,7 @@ const SocialList = (props) => {
                 </a>
             </li>
         </StyledList>
-    )
-}
+    );
+};
 
-export default SocialList
+export default SocialList;

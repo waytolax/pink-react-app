@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 
 const StyledOverlay = styled.div `
@@ -14,7 +14,7 @@ const StyledOverlay = styled.div `
 const Overlay = (props) => {
     return (
         <StyledOverlay onClick={props.onClick}/>
-    )
-}
+    );
+};
 
-export default Overlay
+export default Overlay;

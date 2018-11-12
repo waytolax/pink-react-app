@@ -50,8 +50,8 @@ class MapContainer extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        browser: state.globalReducer.browser
-    }
+        browser: state.global.browser
+    };
 }
 
 export default connect(mapStateToProps)(MapContainer);

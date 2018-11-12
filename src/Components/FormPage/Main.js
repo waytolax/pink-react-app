@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 import styled from 'styled-components';
 import {media} from '../UI/media';
 import Form from './Form';
@@ -86,7 +86,7 @@ class Main extends Component {
     }
 
     onSubmitHandler = (event) => {
-        event.preventDefault(event)
+        event.preventDefault(event);
         this.setState({
             status: 'success'
         });
@@ -117,8 +117,8 @@ class Main extends Component {
                 }
 
             </StyledMain>
-        )
-    }
-}
+        );
+    };
+};
 
-export default Main
+export default Main;

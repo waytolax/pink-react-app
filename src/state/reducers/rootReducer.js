@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux';
-import photoReducer from './photoReducer';
-import authReducer from './authReducer';
-import globalReducer from './globalReducer';
+import photo from './photoReducer';
+import auth from './authReducer';
+import global from './globalReducer';
 
 export default combineReducers({
-    photoReducer, authReducer, globalReducer
-})
+    photo,
+    auth,
+    global,
+});

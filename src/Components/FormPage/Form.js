@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import {media} from '../UI/media';
 import {Button} from '../UI/Buttons';
@@ -498,7 +498,7 @@ const Form = (props) => {
             </ButtonWrapper>
 
         </StyledForm>
-    )
-}
+    );
+};
 
-export default Form
+export default Form;

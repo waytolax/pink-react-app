@@ -1,86 +1,98 @@
-import {SET_ACTIVE, CHANGE_VALUE, SET_DEFAULT, UPDATE_IMAGE, SET_IMAGE_ERROR, SET_LIKE, SET_COMMENT, ADD_ARTICLE_SUCCESS, FETCH_ARTICLES_START, FETCH_ARTICLES_SUCCESS, FETCH_ARTICLES_ERROR} from './actionTypes';
+import {
+    SET_ACTIVE,
+    CHANGE_VALUE,
+    SET_DEFAULT,
+    UPDATE_IMAGE,
+    SET_IMAGE_ERROR,
+    SET_LIKE,
+    SET_COMMENT,
+    ADD_ARTICLE_SUCCESS,
+    FETCH_ARTICLES_START,
+    FETCH_ARTICLES_SUCCESS,
+    FETCH_ARTICLES_ERROR,
+} from '../constants/photo';
 import firebase, {storage} from '../../firebase';
 import axios from 'axios';
 
 export function onLike(e) {
     return (dispatch, getState) => {
-        e.preventDefault()
-        let state = getState().photoReducer
-        let articles = state.articles
+        e.preventDefault();
+        let state = getState().photo;
+        let articles = state.articles;
         let current = e.target.id.slice(8);
         return articles.map(article => {
             if (article.id === +current) {
                 if (!article.liked) {
-                    article.likes += 1
-                    article.liked = true
+                    article.likes += 1;
+                    article.liked = true;
                 } else {
-                    article.likes -= 1
-                    article.liked = false
+                    article.likes -= 1;
+                    article.liked = false;
                 }
             }
-            return dispatch(setLike(articles))
-        })
-    }
+            return dispatch(setLike(articles));
+        });
+    };
 }
 
 function setLike(articles) {
     return {
         type: SET_LIKE,
-        articles
-    }
+        articles,
+    };
 }
 
 export function onSetActive(e) {
     return (dispatch, getState) => {
         let current = e.target.id.slice(5);
-        const types = ['brightness', 'saturate', 'contrast']
-        const state = getState().photoReducer
-        let results
+        const types = ['brightness', 'saturate', 'contrast'];
+        const state = getState().photo;
+        let results;
             types.map(type => {
                 results = {
                     [type]: {active: false, value: +state[type].value},
                     [current]: {active: true, value: +state[current].value}
                 };
-            return dispatch(setActive(results))
-            })
-    }
+            return dispatch(setActive(results));
+        });
+    };
 }
 
 function setActive(results) {
     return {
         type: SET_ACTIVE,
-        results
-    }
+        results,
+    };
 }
 
 export function onChangeValue(e) {
     return (dispatch) => {
         onSetActive(e);
         let current = e.target.id.slice(5);
-        let value = +e.target.value
-        dispatch(changeValue(current, value))
-    }
+        let value = +e.target.value;
+        dispatch(changeValue(current, value));
+    };
 }
 
 function changeValue(currentInput, inputValue) {
     return {
         type: CHANGE_VALUE,
         currentInput,
-        inputValue
-    }
+        inputValue,
+    };
 }
 
 export function onCancel(e) {
     return (dispatch) => {
-        e.preventDefault()
-        dispatch(setDefault())
-    }
+        e.preventDefault();
+        dispatch(setDefault());
+    };
 }
 
 function setDefault() {
     return {
-        type: SET_DEFAULT
-    }
+        type: SET_DEFAULT,
+    };
 }
 
 export function onImageSelect (e) {
@@ -93,41 +105,41 @@ export function onImageSelect (e) {
             if (file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/webp') {
                 if (file.size < 4194304) {
                     reader.onloadend = () => {
-                        return dispatch(updateImage(file, reader.result))
-                    }
-                    reader.readAsDataURL(file)
+                        return dispatch(updateImage(file, reader.result));
+                    };
+                    reader.readAsDataURL(file);
                 } else {
-                    return dispatch(setImageError())
+                    return dispatch(setImageError());
                 }
             } else {
-                return dispatch(setImageError())
+                return dispatch(setImageError());
             }
         }
-    }
+    };
 }
 
 function updateImage(file, url) {
     return {
         type: UPDATE_IMAGE,
         file,
-        url
-    }
+        url,
+    };
 }
 
 function setImageError() {
     return {
-        type: SET_IMAGE_ERROR
-    }
+        type: SET_IMAGE_ERROR,
+    };
 }
 
 export function onUpload(e) {
     return (dispatch, getState) => {
-        e.preventDefault()
-        dispatch(fetchArticlesStart())
-        let state = getState().photoReducer
-        let authState = getState().authReducer
+        e.preventDefault();
+        dispatch(fetchArticlesStart());
+        let state = getState().photo;
+        let authState = getState().auth;
 
-        const uploadTask = storage.ref(`images/${state.file.name}`).put(state.file)
+        const uploadTask = storage.ref(`images/${state.file.name}`).put(state.file);
         uploadTask.on('state_changed',
         (progress) => {
             let status = Math.round((progress.bytesTransferred / progress.totalBytes) * 100);
@@ -150,34 +162,34 @@ export function onUpload(e) {
                     name: authState.user.displayName,
                     text: state.commentText,
                     time: Date.now(),
-                    styles: styles
-                }
-                return newArticle
+                    styles: styles,
+                };
+                return newArticle;
             })
             .then((newArticle) => {
-                let newArticles = state.articles
-                newArticles.unshift(newArticle)
+                let newArticles = state.articles;
+                newArticles.unshift(newArticle);
 
                 try {
-                    firebase.database().ref('articles').push(newArticle)
+                    firebase.database().ref('articles').push(newArticle);
                 } catch (e) {
-                    dispatch(setImageError())
+                    dispatch(setImageError());
                 }
-                dispatch(setDefault())
-                dispatch(addArticleSuccess(newArticles))
+                dispatch(setDefault());
+                dispatch(addArticleSuccess(newArticles));
             })
             .then(() => {
-                window.scrollTo(0, 750)
-            })
-        })
-    }
+                window.scrollTo(0, 750);
+            });
+        });
+    };
 }
 
 function addArticleSuccess(newArticles) {
     return {
         type: ADD_ARTICLE_SUCCESS,
-        newArticles
-    }
+        newArticles,
+    };
 }
 
 export function commentHandler(e) {
@@ -186,80 +198,104 @@ export function commentHandler(e) {
         text.length === 180
         ? e.target.style.color = 'red'
         : e.target.style.color = 'black';
-        return dispatch(setComment(text))
-    }
+        return dispatch(setComment(text));
+    };
 }
 
 function setComment(text) {
     return {
         type: SET_COMMENT,
-        text
-    }
+        text,
+    };
 }
 
 export function fetchArticles() {
     return async dispatch => {
-        dispatch(fetchArticlesStart())
+        dispatch(fetchArticlesStart());
         try {
-            const res = await axios.get('https://pink-react-app.firebaseio.com/articles.json')
+            const res = await axios.get('https://pink-react-app.firebaseio.com/articles.json');
             let articles = [];
             Object.keys(res.data).forEach((key) => {
-                articles.push(res.data[key])
-            })
-            articles.reverse()
-            dispatch(fetchArticlesSuccess(articles))
+                articles.push(res.data[key]);
+            });
+            articles.reverse();
+            dispatch(fetchArticlesSuccess(articles));
         } catch (error) {
-            dispatch(fetchArticlesError(error))
+            dispatch(fetchArticlesError(error));
         }
-    }
+    };
 }
 
 function fetchArticlesStart() {
     return {
-        type: FETCH_ARTICLES_START
-    }
+        type: FETCH_ARTICLES_START,
+    };
 }
 
 function fetchArticlesSuccess(fetchedArticles) {
     return {
         type: FETCH_ARTICLES_SUCCESS,
-        fetchedArticles
-    }
+        fetchedArticles,
+    };
 }
 
 function fetchArticlesError(fetchError) {
     return {
         type: FETCH_ARTICLES_ERROR,
-        fetchError
-    }
+        fetchError,
+    };
 }
 
 function timeEndName(digit, type) {
     let lastFigure = digit % 10;
     if (digit > 11 && digit < 15) {
-        return type === 'day' ? 'Дней'
-        : type === 'hour' ? 'Часов'
-        : type === 'min' ? 'Минут'
-        : 'Секунд'
+        switch (type) {
+            case 'day':
+                return 'Дней';
+            case 'hour':
+                return 'Часов';
+            case 'min':
+                return 'Минут';
+            default:
+                return 'Секунд';
+        }
     }
     else {
         if (lastFigure === 1) {
-            return type === 'day' ? 'День'
-            : type === 'hour' ? 'Час'
-            : type === 'min' ? 'Минута'
-            : 'Секунда'
+            switch (type) {
+                case 'day':
+                    return 'День';
+                case 'hour':
+                    return 'Час';
+                case 'min':
+                    return 'Минута';
+                default:
+                    return 'Секунда';
+            }
         }
         if (lastFigure > 1 && lastFigure < 5) {
-            return type === 'day' ? 'Дня'
-            : type === 'hour' ? 'Часа'
-            : type === 'min' ? 'Минуты'
-            : 'Секунды'
+            switch (type) {
+                case 'day':
+                    return 'Дня';
+                case 'hour':
+                    return 'Часа';
+                case 'min':
+                    return 'Минуты';
+                default:
+                    return 'Секунды';
+            }
         }
         if (lastFigure === 0 || lastFigure >= 5) {
-            return type === 'day' ? 'Дней'
-            : type === 'hour' ? 'Часов'
-            : type === 'min' ? 'Минут'
-            : 'Секунд'
+            switch (type) {
+                case 'day':
+                    return 'Дней';
+                case 'hour':
+                    return 'Часов';
+                case 'min':
+                    return 'Минут';
+                default:
+                    return 'Секунд';
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import {media} from '../UI/media';
 
@@ -38,16 +38,16 @@ const StyledProfile = styled.div`
 `;
 
 const getAbbr = (name) => {
-    return name.charAt(0).toUpperCase()
-}
+    return name.charAt(0).toUpperCase();
+};
 
 const onClickHandler = (e) => {
-    let target = e.currentTarget
-    target.classList.add('hide')
+    let target = e.currentTarget;
+    target.classList.add('hide');
     setTimeout(() => {
-        target.classList.remove('hide')
+        target.classList.remove('hide');
     }, 3000);
-}
+};
 
 const Profile = (props) => {
     return (
@@ -60,7 +60,7 @@ const Profile = (props) => {
                     : <span>{getAbbr(props.name)}</span>
             }
         </StyledProfile>
-    )
-}
+    );
+};
 
-export default Profile
+export default Profile;

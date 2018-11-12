@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import {media} from '../UI/media';
 
@@ -108,7 +108,7 @@ const Research = (props) => {
             </p>
             <a href="/">Узнать больше об исcледовании</a>
         </StyledResearch>
-    )
-}
+    );
+};
 
-export default Research
+export default Research;

@@ -7,7 +7,7 @@ const Map = withScriptjs(withGoogleMap((props) =>{
   const coordinates = {
           lat: 13.746877,
           lng: 100.533067
-      }
+      };
 
   return (
       <GoogleMap
@@ -28,6 +28,6 @@ const Map = withScriptjs(withGoogleMap((props) =>{
       </GoogleMap>
     );
   }
-))
+));
 
 export default Map;

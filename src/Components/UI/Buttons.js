@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import {media} from './media';
 
@@ -84,8 +84,8 @@ export const Button = (props) => {
             disabled={props.disabled}
         >{props.children}
         </StyledButton>
-    )
-}
+    );
+};
 
 export const RoundedButton = (props) => {
     return (
@@ -94,7 +94,7 @@ export const RoundedButton = (props) => {
             onClick={props.onClick}
         >{props.children}
         </StyledRounded>
-    )
-}
+    );
+};
 
-export default RoundedButton
+export default RoundedButton;

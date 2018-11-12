@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
@@ -113,14 +113,14 @@ const AddPhoto = (props) => {
 
 
         </StyledSection>
-    )
-}
+    );
+};
 
 function mapStateToProps(state) {
     return {
-        isLogged: !!state.authReducer.user,
-        isIe: state.globalReducer.browser === 'ie' ? true : false
-    }
+        isLogged: !!state.auth.user,
+        isIe: state.global.browser === 'ie' ? true : false
+    };
 }
 
 export default connect(mapStateToProps)(AddPhoto);

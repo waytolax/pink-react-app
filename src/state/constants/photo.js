@@ -1,6 +1,6 @@
 export const SET_ACTIVE = 'SET_ACTIVE';
-export const CHANGE_VALUE = 'CHANGE_VALUE';
 export const SET_DEFAULT = 'SET_DEFAULT';
+export const CHANGE_VALUE = 'CHANGE_VALUE';
 export const UPLOAD = 'UPLOAD';
 export const UPDATE_IMAGE = 'UPDATE_IMAGE';
 export const SET_IMAGE_ERROR = 'SET_IMAGE_ERROR';
@@ -10,9 +10,3 @@ export const ADD_ARTICLE_SUCCESS = 'ADD_ARTICLE';
 export const FETCH_ARTICLES_START = 'FETCH_ARTICLES_START';
 export const FETCH_ARTICLES_SUCCESS = 'FETCH_ARTICLES_SUCCESS';
 export const FETCH_ARTICLES_ERROR = 'FETCH_ARTICLES_ERROR';
-export const AUTH_SUCCESS = 'AUTH_SUCCESS';
-export const AUTH_FAILURE = 'AUTH_FAILURE';
-export const AUTH_LOGOUT = 'AUTH_LOGOUT';
-export const SET_BROWSER = 'SET_BROWSER';
-export const SET_MEDIA = 'SET_MEDIA';
-export const AUTH_START = 'AUTH_START';

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import Logo from '../UI/Logo';
 import {media} from '../UI/media';
@@ -66,4 +66,4 @@ const NavToggle = (props) => {
     )
 }
 
-export default NavToggle
+export default NavToggle;

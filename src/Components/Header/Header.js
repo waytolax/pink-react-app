@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 import styled from 'styled-components';
 import {withRouter} from 'react-router-dom';
 import NavToggle from './NavToggle';
@@ -48,8 +48,8 @@ class Header extends Component {
             }
 
         </StyledHeader>
-    )
-}
-}
+    );
+};
+};
 
-export default withRouter(Header)
+export default withRouter(Header);

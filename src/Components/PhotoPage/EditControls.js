@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
 import {media} from '../UI/media';
@@ -151,7 +151,7 @@ const StyledArea = styled.textarea `
 `;
 
 function renderControls(props) {
-    const controls = ['brightness', 'saturate', 'contrast']
+    const controls = ['brightness', 'saturate', 'contrast'];
 
     return controls.map((control, index) => {
         return (
@@ -215,13 +215,13 @@ const EditControls = (props) => {
 
 function mapStateToProps(state) {
     return {
-        brightness: state.photoReducer.brightness,
-        saturate: state.photoReducer.saturate,
-        contrast: state.photoReducer.contrast,
-        hasChanged: state.photoReducer.hasChanged,
-        hasPhoto: state.photoReducer.hasPhoto,
-        file: state.photoReducer.file,
-        commentText: state.photoReducer.commentText
+        brightness: state.photo.brightness,
+        saturate: state.photo.saturate,
+        contrast: state.photo.contrast,
+        hasChanged: state.photo.hasChanged,
+        hasPhoto: state.photo.hasPhoto,
+        file: state.photo.file,
+        commentText: state.photo.commentText
     }
 }
 
@@ -235,4 +235,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditControls)
+export default connect(mapStateToProps, mapDispatchToProps)(EditControls);

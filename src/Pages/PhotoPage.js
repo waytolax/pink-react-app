@@ -14,7 +14,7 @@ const PhotoPage = (props) => {
             <AddEditPhoto />
             <Footer />
         </React.Fragment>
-    )
-}
+    );
+};
 
-export default PhotoPage
+export default PhotoPage;

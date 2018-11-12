@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import {media} from '../UI/media';
@@ -107,7 +107,7 @@ const Article = (props) => {
                 onClick={props.onClick}
             />
         </StyledArticle>
-    )
-}
+    );
+};
 
-export default Article
+export default Article;

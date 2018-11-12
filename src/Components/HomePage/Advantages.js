@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
 import {media} from '../UI/media';
@@ -209,13 +209,13 @@ const Advantages = (props) => {
                 </li>
             </ul>
         </StyledAdvs>
-    )
-}
+    );
+};
 
 function mapStateToProps(state) {
     return {
-        browser: state.globalReducer.browser
-    }
+        browser: state.global.browser
+    };
 }
 
 export default connect(mapStateToProps)(Advantages);

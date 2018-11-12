@@ -12,7 +12,7 @@ const FormPage = (props) => {
             <Main />
             <Footer />
         </React.Fragment>
-    )
-}
+    );
+};
 
-export default FormPage
+export default FormPage;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import {media} from './media';
@@ -48,8 +48,8 @@ const StyledLogo = styled.svg`
 const Logo = (props) => {
 
     const getMedia = () => {
-        return window.innerWidth < 660 ? 'mobile' : window.innerWidth >= 960 ? 'desktop' : props.className !== 'footer' ? 'tablet' : 'desktop'
-    }
+        return window.innerWidth < 660 ? 'mobile' : window.innerWidth >= 960 ? 'desktop' : props.className !== 'footer' ? 'tablet' : 'desktop';
+    };
 
     return (
             <StyledLink
@@ -70,7 +70,7 @@ const Logo = (props) => {
                     }
                 </StyledLogo>
             </StyledLink>
-    )
-}
+    );
+};
 
-export default Logo
+export default Logo;

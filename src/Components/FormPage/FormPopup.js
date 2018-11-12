@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import {Button} from '../UI/Buttons';
 import {media} from '../UI/media';
@@ -79,7 +79,7 @@ const Popup = (props) => {
                 >ЗАКРЫТЬ ОКНО</Button>
             </div>
         </StyledPopup>
-    )
-}
+    );
+};
 
-export default Popup
+export default Popup;

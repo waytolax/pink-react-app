@@ -9,7 +9,7 @@ const MapMarker = (props) => {
           icon={Icon}
         >
         </Marker>
-    )
-}
+    );
+};
 
-export default MapMarker
+export default MapMarker;

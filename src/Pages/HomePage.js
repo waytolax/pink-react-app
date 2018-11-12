@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import {connect} from 'react-redux';
-import { ReactComponent as HomePageSprite } from '../index-sprite.svg'
+import { ReactComponent as HomePageSprite } from '../index-sprite.svg';
 import Header from '../Components/Header/Header';
 import Advantages from '../Components/HomePage/Advantages';
 import Research from '../Components/HomePage/Research';
@@ -25,13 +25,13 @@ const HomePage = (props) => {
             <MapContainer />
             <Footer />
         </React.Fragment>
-    )
-}
+    );
+};
 
 function mapStateToProps(state) {
     return {
-        media: state.globalReducer.media
-    }
+        media: state.global.media
+    };
 }
 
 export default connect(mapStateToProps)(HomePage);

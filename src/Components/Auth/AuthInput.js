@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import {media} from '../UI/media';
 
@@ -63,7 +63,7 @@ const Wrapper = styled.div`
 const AuthInput = (props) => {
 
     function isInvalid({valid, changed, shouldValidate}) {
-        return !valid && shouldValidate && changed
+        return !valid && shouldValidate && changed;
     }
 
     return (
@@ -86,7 +86,7 @@ const AuthInput = (props) => {
                 autoFocus={props.autoFocus}
             />
         </Wrapper>
-    )
-}
+    );
+};
 
-export default AuthInput
+export default AuthInput;

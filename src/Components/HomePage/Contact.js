@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import Separator from '../UI/Separator';
 import {media} from '../UI/media';
@@ -133,7 +133,7 @@ const Contact = (props) => {
 
             <Separator footer />
         </StyledContact>
-    )
-}
+    );
+};
 
-export default Contact
+export default Contact;

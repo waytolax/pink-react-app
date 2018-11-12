@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
-import {media} from '../UI/media'
+import {media} from '../UI/media';
 
 const StyledCopyright = styled.div`
     display: flex;
@@ -61,4 +61,4 @@ const Copyright = (props) => {
     )
 }
 
-export default Copyright
+export default Copyright;

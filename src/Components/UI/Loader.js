@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled, {keyframes} from 'styled-components';
 import {media} from './media';
 
@@ -54,7 +54,7 @@ const Loader = (props) => {
             <div/>
             <div/>
         </StyledLoader>
-    )
-}
+    );
+};
 
-export default Loader
+export default Loader;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import {media} from '../UI/media';
 
@@ -87,7 +87,7 @@ const LikeBtn = (props) => {
              >нравится:</button>
             <output>{props.likes}</output>
         </StyledBtn>
-    )
-}
+    );
+};
 
-export default LikeBtn
+export default LikeBtn;

@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 import styled from 'styled-components';
 import {SampleNextArrow, SamplePrevArrow, Controls} from '../UI/Controls';
 import {media} from '../UI/media';
@@ -120,7 +120,7 @@ const StyledReviews = styled.section`
     `}
 `;
 
-class ReviewsNew extends Component {
+class Reviews extends Component {
 
     state ={
         currentReviewId: 1,
@@ -241,8 +241,8 @@ class ReviewsNew extends Component {
                 <Controls type='review' onChange={this.onChangeHandler}/>
                 <Separator />
             </StyledReviews>
-        )
-    }
+        );
+    };
 }
 
-export default ReviewsNew
+export default Reviews;

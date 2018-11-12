@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 
 const StyledInput = styled.input`
@@ -134,7 +134,7 @@ const InputRange = (props) => {
         value={props.value}
         disabled={props.disabled}
         />
-    )
-}
+    );
+};
 
-export default InputRange
+export default InputRange;

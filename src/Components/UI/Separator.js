@@ -20,7 +20,7 @@ const Separator = (props) => {
                 : "#bg-triangle-white"}
             />
         </StyledSeparator>
-    )
-}
+    );
+};
 
-export default Separator
+export default Separator;

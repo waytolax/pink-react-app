@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import {withRouter} from 'react-router-dom';
 import {media} from '../UI/media';
@@ -32,7 +32,7 @@ const Footer = (props) => {
             <SocialList />
             <Copyright />
         </StyledFooter>
-    )
-}
+    );
+};
 
-export default withRouter(Footer)
+export default withRouter(Footer);

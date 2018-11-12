@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
@@ -154,22 +154,22 @@ const StyledBackground = styled.div`
 
 
 const Background = (props) => {
-    let className = 'home'
+    let className = 'home';
     if (props.match.path !== '/') {
-        className = props.match.path.slice(1)
+        className = props.match.path.slice(1);
     }
     return (
         <StyledBackground
             webp={props.browser === 'chrome'}
             className={`${props.className} ${className}`}
         />
-    )
-}
+    );
+};
 
 function mapStateToProps(state) {
     return {
-        browser: state.globalReducer.browser
-    }
+        browser: state.global.browser
+    };
 }
 
 export default withRouter(connect(mapStateToProps)(Background));

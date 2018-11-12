@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import {media} from '../UI/media';
 import LikeBtn from './LikeBtn';
@@ -75,11 +75,11 @@ const MAX_LENGTH = window.outerWidth < 660
 
 const readMore = (text) => {
     if (text.length > MAX_LENGTH) {
-        let last = text.substring(0, MAX_LENGTH).lastIndexOf(' ')
-        text = text.substring(0, last).concat('...')
+        let last = text.substring(0, MAX_LENGTH).lastIndexOf(' ');
+        text = text.substring(0, last).concat('...');
     }
-    return text
-}
+    return text;
+};
 
 const PhotoInfo = (props) => {
     return (
@@ -99,7 +99,7 @@ const PhotoInfo = (props) => {
                 onClick={props.onClick}
             />
         </StyledInfo>
-    )
-}
+    );
+};
 
-export default PhotoInfo
+export default PhotoInfo;

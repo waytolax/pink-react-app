@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
 import {NavLink, Link, withRouter} from 'react-router-dom';
@@ -191,16 +191,14 @@ const Nav = (props) => {
 
 function mapStateToProps(state) {
     return {
-        isLogged: !!state.authReducer.user,
-        userName: state.authReducer.user ? state.authReducer.user.displayName : null,
-        photoURL: state.authReducer.user ? state.authReducer.user.photoURL : null
+        isLogged: !!state.auth.user,
+        userName: state.auth.user ? state.auth.user.displayName : null,
+        photoURL: state.auth.user ? state.auth.user.photoURL : null
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        authLogout: () => dispatch(authLogout())
+const mapDispatchToProps = {
+        authLogout,
     }
-}
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Nav));
