@@ -237,6 +237,7 @@ class AuthPopup extends Component {
             this.state.authInputs.email.value,
             this.state.authInputs.password.value,
             false,
+            this.props.history,
         )
     }
 

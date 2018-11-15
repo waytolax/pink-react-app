@@ -9,28 +9,24 @@ import firebase, { googleProvider, gitProvider } from '../../firebase';
 export function auth(username, email, password, isLogin, history) {
     return async (dispatch) => {
         dispatch(authStart());
-        let action = null;
-        if (isLogin) {
-            action = firebase.auth().signInWithEmailAndPassword(email, password);
-        } else {
-            action = firebase.auth().createUserWithEmailAndPassword(email, password);
-        }
-
         try {
-            const res = await action;
             if (!isLogin) {
+                const res = await firebase.auth().createUserWithEmailAndPassword(email, password);
                 res.user.updateProfile({
                     displayName: username,
                 });
+                setTimeout(() => {
+                    dispatch(authSuccess(res.user));
+                }, 3000);
             } else {
+                const res = await firebase.auth().signInWithEmailAndPassword(email, password);
                 if (res.user.displayName !== username) {
                     throw new Error('Неверное имя пользователя');
                 }
-                dispatch(authSuccess(res.user));
-                setTimeout(() => {
-                    history.goBack();
-                }, 1000);
             }
+            setTimeout(() => {
+                history.goBack();
+            }, 1000);
         } catch (e) {
             const errorMsg = e.code ? e.code.slice(5) : e.message;
             dispatch(authFailure(errorHandler(errorMsg)));
@@ -76,7 +72,7 @@ function authFailure(message) {
 export function autoLogin() {
     return dispatch => {
         firebase.auth().onAuthStateChanged((user) => {
-            user ? dispatch(authSuccess(user)) : dispatch(authLogout());
+                return user && dispatch(authSuccess(user));
             })
         }
     }

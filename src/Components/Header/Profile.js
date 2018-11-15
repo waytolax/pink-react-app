@@ -38,7 +38,7 @@ const StyledProfile = styled.div`
 `;
 
 const getAbbr = (name) => {
-    return name.charAt(0).toUpperCase();
+    return name !== null ? name.charAt(0).toUpperCase() : ':)';
 };
 
 const onClickHandler = (e) => {
