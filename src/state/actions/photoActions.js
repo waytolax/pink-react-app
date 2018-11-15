@@ -248,7 +248,7 @@ function fetchArticlesError(fetchError) {
 
 function timeEndName(digit, type) {
     const lastFigure = digit % 10;
-    if (digit > 11 && digit < 15) {
+    if (digit >= 11 && digit < 15) {
         switch (type) {
             case 'day':
                 return 'Дней';
