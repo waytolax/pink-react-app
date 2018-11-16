@@ -159,7 +159,7 @@ export function onUpload(e) {
                     image: url,
                     liked: false,
                     likes: 0,
-                    name: authState.user.displayName,
+                    name: authState.user.displayName || 'Аноним',
                     text: state.commentText,
                     time: Date.now(),
                     styles: styles,
