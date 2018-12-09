@@ -1,4 +1,4 @@
-"# Pink React App - Gallery"
+# Pink React App
 
 1) ReactJS
 2) React Router
